@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { FC } from 'react';
 import { getItemById, getItemIds } from '../../_services/graphql';
 import { IoPersonSharp, IoCalendarSharp } from 'react-icons/io5';
 import { Review } from '@/app/_components';
@@ -33,9 +33,7 @@ const Item: FC<PageProps> = async ({ params }) => {
           ))}
         </ul>
       </section>
-      <Suspense fallback={<span className="loader"></span>}>
-        <Review id={id} />
-      </Suspense>
+      <Review id={id} />
     </main>
   );
 };
