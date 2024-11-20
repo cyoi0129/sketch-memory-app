@@ -1,10 +1,17 @@
+import { FC } from 'react';
 import { ListItem } from '../../_components';
-import { getItemByTag, getTagById } from '../../_services/graphql';
+import { getItemByTag, getTagById, getTagIds } from '../../_services/graphql';
 import '../../_styles/list.scss';
 
-const Tag = async ({ params }: { params: { id: string } }) => {
-  const result = await getItemByTag(params.id);
-  const tag_result = await getTagById(params.id);
+export const generateStaticParams = async (): Promise<{id: string}[]> => {
+  const result = await getTagIds();
+  return result.data.tags;
+}
+
+const Tag: FC<PageProps> = async ({ params }) => {
+  const id = (await params).id;
+  const result = await getItemByTag(id);
+  const tag_result = await getTagById(id);
   const item_list = result.data.tagItems;
   return (
     <main>

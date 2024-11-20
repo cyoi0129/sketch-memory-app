@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: 'Sketch Memory POC Application',
 };
 
+export const experimental_ppr = true;
+
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -1,10 +1,17 @@
+import { FC } from 'react';
 import { ListItem } from '../../_components';
-import { getItemByAuthor, getAuthorById } from '../../_services/graphql';
+import { getItemByAuthor, getAuthorById, getAuthorIds } from '../../_services/graphql';
 import '../../_styles/list.scss';
 
-const Author = async ({ params }: { params: { id: string } }) => {
-  const result = await getItemByAuthor(params.id);
-  const author_result = await getAuthorById(params.id);
+export const generateStaticParams = async (): Promise<{id: string}[]> => {
+  const result = await getAuthorIds();
+  return result.data.authors;
+}
+
+const Author: FC<PageProps> = async ({ params }) => {
+  const id = (await params).id;
+  const result = await getItemByAuthor(id);
+  const author_result = await getAuthorById(id);
   const item_list = result.data.authorItems;
   return (
     <main>

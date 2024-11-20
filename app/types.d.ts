@@ -37,6 +37,24 @@ type ItemListResponse = {
   };
 };
 
+type ItemIdsResponse = {
+  data: {
+    items: Array<{ id: string }>;
+  };
+};
+
+type AuthorIdsResponse = {
+  data: {
+    authors: Array<{ id: string }>;
+  };
+};
+
+type TagIdsResponse = {
+  data: {
+    tags: Array<{ id: string }>;
+  };
+};
+
 type MetaListResponse = {
   data: {
     tags: Array<BasicItemType>;
@@ -99,3 +117,7 @@ type FormProps = {
   id: string;
   action: (review: ReviewItem) => void;
 };
+
+type PageProps = {
+  params: Promise<{ id: string }>
+}

@@ -1,10 +1,17 @@
-import { getItemById } from '../../_services/graphql';
+import { FC, Suspense } from 'react';
+import { getItemById, getItemIds } from '../../_services/graphql';
 import { IoPersonSharp, IoCalendarSharp } from 'react-icons/io5';
 import { Review } from '@/app/_components';
 import '../../_styles/item.scss';
 
-const Item = async ({ params }: { params: { id: string } }) => {
-  const result = await getItemById(params.id);
+export const generateStaticParams = async (): Promise<{ id: string }[]> => {
+  const result = await getItemIds();
+  return result.data.items;
+}
+
+const Item: FC<PageProps> = async ({ params }) => {
+  const id = (await params).id;
+  const result = await getItemById(id);
   const { title, image, date, author, tags } = result.data.item;
 
   return (
@@ -26,7 +33,9 @@ const Item = async ({ params }: { params: { id: string } }) => {
           ))}
         </ul>
       </section>
-      <Review id={params.id} />
+      <Suspense fallback={<span className="loader"></span>}>
+        <Review id={id} />
+      </Suspense>
     </main>
   );
 };

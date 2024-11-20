@@ -24,6 +24,30 @@ const GET_ITEMS = gql`
   }
 `;
 
+const GET_ITEMIDS = gql`
+  query Items {
+    items {
+      id
+    }
+  }
+`;
+
+const GET_AUTHORIDS = gql`
+  query Authors {
+    authors {
+      id
+    }
+  }
+`;
+
+const GET_TAGIDS = gql`
+  query Tags {
+    tags {
+      id
+    }
+  }
+`;
+
 const GET_METAS = gql`
   query Items {
     tags {
@@ -152,6 +176,30 @@ export const postReviewMutation = (review: PostReviewData) => {
 
 export const getItems = async (): Promise<ItemListResponse> => {
   const response: ItemListResponse = await client.query({ query: GET_ITEMS }).then((result) => {
+    console.log(result);
+    return result;
+  });
+  return response;
+};
+
+export const getItemIds = async (): Promise<ItemIdsResponse> => {
+  const response: ItemIdsResponse = await client.query({ query: GET_ITEMIDS }).then((result) => {
+    console.log(result);
+    return result;
+  });
+  return response;
+};
+
+export const getAuthorIds = async (): Promise<AuthorIdsResponse> => {
+  const response: AuthorIdsResponse = await client.query({ query: GET_AUTHORIDS }).then((result) => {
+    console.log(result);
+    return result;
+  });
+  return response;
+};
+
+export const getTagIds = async (): Promise<TagIdsResponse> => {
+  const response: TagIdsResponse = await client.query({ query: GET_TAGIDS }).then((result) => {
     console.log(result);
     return result;
   });
