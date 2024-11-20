@@ -1,0 +1,74 @@
+.form {
+  margin-top: 64px;
+  width: 100%;
+  max-width: 640px;
+  h2 {
+    margin-bottom: 16px;
+    border-bottom: solid 2px #4c2e30;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    svg {
+      font-size: 140%;
+    }
+  }
+
+  dt {
+    margin: 32px 0 16px;
+    font-weight: bold;
+  }
+
+  input,
+  textarea {
+    appearance: none;
+    border: none;
+    height: 24px;
+    border-radius: 4px;
+    padding: 0 8px;
+  }
+
+  textarea {
+    resize: none;
+    width: 300px;
+    height: 80px;
+    padding: 8px;
+    overflow-y: scroll;
+  }
+
+  span {
+    cursor: pointer;
+    font-size: 24px;
+
+    svg {
+      color: #ccc;
+    }
+
+    &.filled {
+      svg {
+        color: #4c2e30;
+      }
+    }
+  }
+
+  button {
+    margin-top: 32px;
+    cursor: pointer;
+    background-color: #4c2e30;
+    width: 200px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    appearance: none;
+    border: none;
+    border-radius: 8px;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #ccc;
+    }
+  }
+}

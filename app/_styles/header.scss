@@ -1,0 +1,19 @@
+header {
+  background-color: #eedcb3;
+  width: 100%;
+  padding: 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  svg {
+    font-size: 36px;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    h1 {
+      font-size: 28px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.navigator {
+  div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+    ul {
+      display: flex;
+      gap: 16px 8px;
+      flex-wrap: wrap;
+      li {
+        list-style: none;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: #eedcb3;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+  }
+}

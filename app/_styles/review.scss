@@ -1,0 +1,39 @@
+.reviews {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 640px;
+
+  h2 {
+    margin-bottom: 16px;
+    border-bottom: solid 2px #4c2e30;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    svg {
+      font-size: 140%;
+    }
+  }
+
+  ul {
+    max-width: 600px;
+    li {
+      margin: 8px 0 16px;
+      list-style: none;
+      padding-bottom: 8px;
+      border-bottom: dashed 1px #4c2e30;
+
+      h3 {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+      }
+
+      .score {
+        display: flex;
+        column-gap: 8px;
+        margin: 8px 0;
+      }
+    }
+  }
+}
