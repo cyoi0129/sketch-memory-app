@@ -7,7 +7,7 @@ import '../../_styles/item.scss';
 export const generateStaticParams = async (): Promise<{ id: string }[]> => {
   const result = await getItemIds();
   return result.data.items;
-}
+};
 
 const Item: FC<PageProps> = async ({ params }) => {
   const id = (await params).id;

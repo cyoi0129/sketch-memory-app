@@ -9,7 +9,7 @@ const Home: FC = async () => {
   return (
     <main>
       <Navigator />
-      <ul className='item_list'>
+      <ul className="item_list">
         {item_list.map((item) => (
           <ListItem key={item.id} data={item} />
         ))}

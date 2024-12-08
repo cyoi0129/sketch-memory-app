@@ -1,9 +1,10 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
 import Loading from './loading';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { CREATE_REVIEW } from '../_services/graphql';
 import { IoHeart } from 'react-icons/io5';
-import { BiSolidMessageRoundedEdit } from "react-icons/bi";
+import { BiSolidMessageRoundedEdit } from 'react-icons/bi';
 import '../_styles/form.scss';
 
 const Form: FC<FormProps> = (props) => {
@@ -13,6 +14,10 @@ const Form: FC<FormProps> = (props) => {
   const [comment, setComment] = useState<string>('');
   const [score, setScore] = useState<number>(0);
 
+  /**
+   * Check Validation
+   * @returns
+   */
   const checkValidate = (): boolean => {
     if (name === '') return true;
     if (comment === '') return true;
@@ -20,25 +25,34 @@ const Form: FC<FormProps> = (props) => {
     return false;
   };
 
-  const CREATE_REVIEW = gql`
-    mutation Review($comment: String!, $score: Int!, $reviewer: String!, $item: String!) {
-      createReview(input: { comment: $comment, score: $score, reviewer: $reviewer, item: $item }) {
-        id
-      }
-    }
-  `;
-
-  const changeName = (value: string) => {
+  /**
+   * Change Name
+   * @param value
+   */
+  const changeName = (value: string): void => {
     setName(value);
   };
-  const changeComment = (value: string) => {
+
+  /**
+   * Change Comment
+   * @param value
+   */
+  const changeComment = (value: string): void => {
     setComment(value);
   };
-  const changeScore = (value: number) => {
+
+  /**
+   * Change Score
+   * @param value
+   */
+  const changeScore = (value: number): void => {
     setScore(value);
   };
 
-  const sendReview = () => {
+  /**
+   * Send Review Data to API
+   */
+  const sendReview = (): void => {
     postProcess({
       variables: {
         comment: comment,
@@ -51,7 +65,7 @@ const Form: FC<FormProps> = (props) => {
 
   const [postProcess, { data, loading, error }] = useMutation(CREATE_REVIEW);
 
-  const doReset = () => {
+  const doReset = (): void => {
     setName('');
     setComment('');
     setScore(0);
@@ -81,7 +95,10 @@ const Form: FC<FormProps> = (props) => {
 
   return (
     <div className="form">
-      <h2><BiSolidMessageRoundedEdit />この作品のレビューを投稿する</h2>
+      <h2>
+        <BiSolidMessageRoundedEdit />
+        この作品のレビューを投稿する
+      </h2>
       <dl>
         <dt>名前</dt>
         <dd>

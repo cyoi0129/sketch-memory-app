@@ -1,12 +1,14 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import 'firebase/compat/storage';
-import firebaseConfig from './firebase';
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const FIREBASE_CONFIG = {
+  apiKey: process.env.API_BASE,
+  storageBucket: process.env.STORAGE_BUCKET
+};
+const firebaseApp = firebase.initializeApp(FIREBASE_CONFIG);
 const storage = firebase.storage(firebaseApp);
 const storageRef = storage.ref();
-
 
 /**
  * Firebase Get Media List

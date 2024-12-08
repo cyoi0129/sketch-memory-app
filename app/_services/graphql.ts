@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 export const client = new ApolloClient({
-  uri: 'http://localhost:8080/query',
+  uri: process.env.API_BASE,
   cache: new InMemoryCache(),
 });
 
@@ -103,6 +103,14 @@ const getItemByIdQuery = (id: string) => {
     }
   `;
 };
+
+export const CREATE_REVIEW = gql`
+mutation Review($comment: String!, $score: Int!, $reviewer: String!, $item: String!) {
+  createReview(input: { comment: $comment, score: $score, reviewer: $reviewer, item: $item }) {
+    id
+  }
+}
+`;
 
 const getItemByTagQuery = (tag: string) => {
   return gql`

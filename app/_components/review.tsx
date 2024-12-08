@@ -8,12 +8,20 @@ import '../_styles/review.scss';
 const Review: FC<ReviewProps> = (props) => {
   const { id } = props;
   const [reviews, setReviews] = useState<ReviewItem[]>([]);
-  const getReviewList = async () => {
+
+  /**
+   * Fetch Review Data
+   */
+  const getReviewList = async (): Promise<void> => {
     const result = await getReviewByItem(id);
     setReviews(result.data.itemReviews);
   };
 
-  const addReview = (new_review: ReviewItem) => {
+  /**
+   * Add New Review
+   * @param new_review
+   */
+  const addReview = (new_review: ReviewItem): void => {
     setReviews([...reviews, new_review]);
   };
 
