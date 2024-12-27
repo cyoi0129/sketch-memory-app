@@ -183,6 +183,7 @@ export const postReviewMutation = (review: PostReviewData) => {
 };
 
 export const getItems = async (): Promise<ItemListResponse> => {
+  console.log(process.env.API_BASE);
   const response: ItemListResponse = await client.query({ query: GET_ITEMS }).then((result) => {
     console.log(result);
     return result;
