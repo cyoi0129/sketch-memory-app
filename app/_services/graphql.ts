@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 export const client = new ApolloClient({
-  uri: process.env.API_BASE,
+  // uri: process.env.API_BASE,
+  uri: "https://sketch-memory-api.onrender.com/query",
   cache: new InMemoryCache(),
 });
 
