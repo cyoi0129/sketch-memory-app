@@ -25,7 +25,7 @@ const Item: FC<PageProps> = async ({ params }) => {
         </h2>
         <h3>
           <IoCalendarSharp />
-          {new Date(date).toLocaleDateString()}
+          {new Date(date).toLocaleDateString('ja-JP')}
         </h3>
         <ul>
           {tags.map((tag) => (

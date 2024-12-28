@@ -18,7 +18,7 @@ const ListItem: FC<ItemProps> = (props) => {
           </h3>
           <div className="date">
             <IoCalendarSharp />
-            {new Date(date).toLocaleDateString()}
+            {new Date(date).toLocaleDateString('ja-JP')}
           </div>
         </div>
       </Link>
